@@ -1,10 +1,10 @@
 {
+	"name": "spack-example-basic",
+	"description": "",
+	"main": "index.js",
+	"scripts": {},
 	"dependencies": {
 		"@codeeditorland/cli": "0.0.1"
 	},
-	"description": "",
-	"devDependencies": {},
-	"main": "index.js",
-	"name": "spack-example-basic",
-	"scripts": {}
+	"devDependencies": {}
 }
