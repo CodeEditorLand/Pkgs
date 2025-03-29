@@ -32,7 +32,7 @@
 		"@changesets/cli": "2.28.1",
 		"@taplo/cli": "0.7.0",
 		"cross-env": "7.0.3",
-		"cspell": "8.17.5",
+		"cspell": "8.18.1",
 		"lerna": "8.2.1",
 		"lint-staged": "15.5.0"
 	}
