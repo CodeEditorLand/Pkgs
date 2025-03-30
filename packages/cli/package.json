@@ -1,6 +1,28 @@
 {
 	"name": "@codeeditorland/cli",
+	"version": "0.0.1",
+	"private": false,
 	"description": "CLI for the swc project",
+	"keywords": [
+		"codeeditorland",
+		"land",
+		"playform"
+	],
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/Pkgs#readme",
+	"bugs": {
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/Pkgs/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+HTTPS://github.com/CodeEditorLand/Pkgs.git"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Source 🖋️ Open 👐🏻",
+		"email": "Source/Open@Editor.Land",
+		"url": "HTTPS://Editor.Land"
+	},
+	"type": "module",
 	"main": "lib/swc/index.js",
 	"bin": {
 		"spack": "./bin/spack.js",
@@ -16,7 +38,7 @@
 		"build:watch": "swc src --strip-leading-paths -d lib --watch --ignore '**/*.test.ts' --ignore '**/__mocks__/**'",
 		"format:examples": "prettier --write examples",
 		"format:src": "prettier --write src",
-		"prepublishOnly": "pnpm build",
+		"prepublishOnly": "Build 'Source/**/*.ts'",
 		"test:coverage": "JEST_COVERAGE=true jest --coverage",
 		"test:watch": "jest --watch",
 		"types": "tsc",
@@ -38,6 +60,7 @@
 		"@codeeditorland/core": "1.6.4",
 		"@codeeditorland/jest": "workspace:^",
 		"@codeeditorland/types": "0.1.9",
+		"@playform/build": "0.2.1",
 		"@types/node": "22.13.14",
 		"@types/semver": "7.7.0",
 		"chokidar": "4.0.3",
@@ -47,5 +70,8 @@
 		"chokidar": {
 			"optional": true
 		}
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }

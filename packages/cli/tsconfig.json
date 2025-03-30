@@ -1,15 +1,26 @@
 {
 	"compilerOptions": {
-		"target": "es2019",
+		"baseUrl": "./",
+		"esModuleInterop": true,
+		"lib": [
+			"ES2019.Array",
+			"ES2020.Promise",
+			"ES2015"
+		],
 		"module": "commonjs",
 		"noEmit": true,
-		"strict": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitReturns": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"noImplicitReturns": true,
-		"noFallthroughCasesInSwitch": true,
-		"esModuleInterop": true,
-		"lib": ["ES2019.Array", "ES2020.Promise", "ES2015"]
+		"outDir": "Target",
+		"rootDir": "src",
+		"strict": true,
+		"target": "es2019"
 	},
-	"include": ["src"]
+	"extends": "@playform/build/tsconfig",
+	"include": [
+		"src",
+		"src"
+	]
 }

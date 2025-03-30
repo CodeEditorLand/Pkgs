@@ -1,8 +1,33 @@
 {
 	"name": "@codeeditorland/extra-packages-workspace",
+	"version": "0.0.1",
+	"private": false,
+	"keywords": [
+		"codeeditorland",
+		"land",
+		"playform"
+	],
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/Pkgs#readme",
+	"bugs": {
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/Pkgs/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+HTTPS://github.com/CodeEditorLand/Pkgs.git"
+	},
 	"funding": {
 		"type": "opencollective",
 		"url": "HTTPS://opencollective.com/swc"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Source 🖋️ Open 👐🏻",
+		"email": "Source/Open@Editor.Land",
+		"url": "HTTPS://Editor.Land"
+	},
+	"type": "module",
+	"scripts": {
+		"prepublishOnly": "Build 'Source/**/*.ts'"
 	},
 	"lint-staged": {
 		"!(**/tests/**/*)*.js": [
@@ -30,10 +55,14 @@
 	"dependencies": {},
 	"devDependencies": {
 		"@changesets/cli": "2.28.1",
+		"@playform/build": "0.2.1",
 		"@taplo/cli": "0.7.0",
 		"cross-env": "7.0.3",
 		"cspell": "8.18.1",
 		"lerna": "8.2.1",
 		"lint-staged": "15.5.0"
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }

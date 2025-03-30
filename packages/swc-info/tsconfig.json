@@ -1,20 +1,28 @@
 {
 	"compilerOptions": {
-		"target": "es2019",
-		"useDefineForClassFields": true,
-		"module": "commonjs",
 		"baseUrl": "./",
-		"paths": {},
-		"resolveJsonModule": true,
 		"declaration": true,
-		"sourceMap": true,
 		"downlevelIteration": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
-		"strict": true,
+		"module": "commonjs",
+		"outDir": "Target",
+		"paths": {},
+		"resolveJsonModule": true,
+		"rootDir": "src",
 		"skipLibCheck": true,
-		"rootDir": "."
+		"sourceMap": true,
+		"strict": true,
+		"target": "es2019",
+		"useDefineForClassFields": true
 	},
-	"include": ["lib", "tests"],
-	"exclude": ["examples"]
+	"exclude": [
+		"examples"
+	],
+	"extends": "@playform/build/tsconfig",
+	"include": [
+		"lib",
+		"tests",
+		"src"
+	]
 }

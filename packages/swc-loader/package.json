@@ -1,11 +1,40 @@
 {
 	"name": "@codeeditorland/loader",
+	"version": "0.0.1",
+	"private": false,
 	"description": "Webpack plugin for swc",
+	"keywords": [
+		"codeeditorland",
+		"land",
+		"playform"
+	],
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/Pkgs#readme",
+	"bugs": {
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/Pkgs/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+HTTPS://github.com/CodeEditorLand/Pkgs.git"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Source 🖋️ Open 👐🏻",
+		"email": "Source/Open@Editor.Land",
+		"url": "HTTPS://Editor.Land"
+	},
+	"type": "module",
 	"main": "src/index.js",
+	"scripts": {
+		"prepublishOnly": "Build 'Source/**/*.ts'"
+	},
 	"dependencies": {
 		"@codeeditorland/counter": "0.0.1"
 	},
 	"devDependencies": {
-		"@codeeditorland/core": "0.0.1"
+		"@codeeditorland/core": "0.0.1",
+		"@playform/build": "0.2.1"
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }
