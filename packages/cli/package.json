@@ -60,7 +60,7 @@
 		"@codeeditorland/core": "1.6.4",
 		"@codeeditorland/jest": "workspace:^",
 		"@codeeditorland/types": "0.1.9",
-		"@playform/build": "0.2.1",
+		"@playform/build": "0.2.2",
 		"@types/node": "22.14.0",
 		"@types/semver": "7.7.0",
 		"chokidar": "4.0.3",
