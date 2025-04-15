@@ -24,6 +24,7 @@
 		"lib",
 		"tests",
 		"src",
+		"src",
 		"src"
 	]
 }
