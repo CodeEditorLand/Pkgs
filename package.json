@@ -54,11 +54,11 @@
 	},
 	"dependencies": {},
 	"devDependencies": {
-		"@changesets/cli": "2.29.0",
+		"@changesets/cli": "2.29.2",
 		"@playform/build": "0.2.3",
 		"@taplo/cli": "0.7.0",
 		"cross-env": "7.0.3",
-		"cspell": "8.18.1",
+		"cspell": "8.19.0",
 		"lerna": "8.2.2",
 		"lint-staged": "15.5.1"
 	},
