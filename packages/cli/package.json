@@ -61,7 +61,7 @@
 		"@codeeditorland/jest": "workspace:^",
 		"@codeeditorland/types": "0.1.9",
 		"@playform/build": "0.2.3",
-		"@types/node": "22.14.1",
+		"@types/node": "22.15.2",
 		"@types/semver": "7.7.0",
 		"chokidar": "4.0.3",
 		"deepmerge": "4.3.1"
