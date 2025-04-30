@@ -1,36 +1,41 @@
 {
-    "name": "swc-info",
-    "packageManager": "pnpm@8.6.7",
-    "version": "0.1.16",
-    "description": "CLI tool to help issue reporting for swc",
-    "sideEffects": false,
-    "scripts": {
-        "build": "tsc",
-        "prepublishOnly": "pnpm build",
-        "prepack": "pnpm build"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/swc-project/pkgs.git"
-    },
-    "publishConfig": {
-        "registry": "https://registry.npmjs.org/",
-        "access": "public"
-    },
-    "keywords": [
-        "swc",
-        "info",
-        "cli"
-    ],
-    "author": "강동윤 <kdy1997.dev@gmail.com>",
-    "license": "Apache-2.0",
-    "bugs": {
-        "url": "https://github.com/swc-project/swc/issues"
-    },
-    "homepage": "https://swc.rs",
-    "devDependencies": {
-        "@types/node": "22.15.2",
-        "typescript": "5.8.3"
-    },
-    "bin": "bin/swc-info.js"
+	"name": "@codeeditorland/info",
+	"version": "0.0.1",
+	"private": false,
+	"description": "CLI tool to help issue reporting for swc",
+	"keywords": [
+		"codeeditorland",
+		"land",
+		"playform"
+	],
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/Pkgs#readme",
+	"bugs": {
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/Pkgs/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+HTTPS://github.com/CodeEditorLand/Pkgs.git"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Source 🖋️ Open 👐🏻",
+		"email": "Source/Open@Editor.Land",
+		"url": "HTTPS://Editor.Land"
+	},
+	"sideEffects": false,
+	"type": "module",
+	"bin": "bin/swc-info.js",
+	"scripts": {
+		"build": "tsc",
+		"prepack": "pnpm build",
+		"prepublishOnly": "Build 'Source/**/*.ts'"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@playform/build": "0.2.3",
+		"@types/node": "22.15.2"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }
