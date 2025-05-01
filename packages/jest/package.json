@@ -46,7 +46,7 @@
 		"@codeeditorland/core": "1.6.4",
 		"@jest/transform": "29.7.0",
 		"@playform/build": "0.2.3",
-		"@types/node": "22.15.2"
+		"@types/node": "22.15.3"
 	},
 	"publishConfig": {
 		"access": "public"
