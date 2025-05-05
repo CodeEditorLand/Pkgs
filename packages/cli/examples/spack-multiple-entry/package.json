@@ -1,39 +1,14 @@
 {
-	"name": "spack-example-multiple-entry",
-	"version": "0.0.1",
-	"private": false,
-	"description": "",
-	"keywords": [
-		"codeeditorland",
-		"land",
-		"playform"
-	],
-	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/Pkgs#readme",
-	"bugs": {
-		"url": "HTTPS://GitHub.Com/CodeEditorLand/Pkgs/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+HTTPS://github.com/CodeEditorLand/Pkgs.git"
-	},
-	"license": "SEE LICENSE IN LICENSE",
-	"author": {
-		"name": "Source 🖋️ Open 👐🏻",
-		"email": "Source/Open@Editor.Land",
-		"url": "HTTPS://Editor.Land"
-	},
-	"type": "module",
-	"main": "lib/index.js",
-	"scripts": {
-		"prepublishOnly": "Build 'Source/**/*.ts'"
-	},
-	"dependencies": {
-		"@codeeditorland/cli": "0.0.1"
-	},
-	"devDependencies": {
-		"@playform/build": "0.2.3"
-	},
-	"publishConfig": {
-		"access": "public"
-	}
+    "name": "spack-example-multiple-entry",
+    "private": true,
+    "version": "1.0.0",
+    "main": "lib/index.js",
+    "scripts": {},
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "@swc/cli": "file:../.."
+    }
 }

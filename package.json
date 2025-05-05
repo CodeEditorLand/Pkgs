@@ -1,68 +1,47 @@
 {
-	"name": "@codeeditorland/extra-packages-workspace",
-	"version": "0.0.1",
-	"private": false,
-	"keywords": [
-		"codeeditorland",
-		"land",
-		"playform"
-	],
-	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/Pkgs#readme",
-	"bugs": {
-		"url": "HTTPS://GitHub.Com/CodeEditorLand/Pkgs/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+HTTPS://github.com/CodeEditorLand/Pkgs.git"
-	},
-	"funding": {
-		"type": "opencollective",
-		"url": "HTTPS://opencollective.com/swc"
-	},
-	"license": "SEE LICENSE IN LICENSE",
-	"author": {
-		"name": "Source 🖋️ Open 👐🏻",
-		"email": "Source/Open@Editor.Land",
-		"url": "HTTPS://Editor.Land"
-	},
-	"type": "module",
-	"scripts": {
-		"prepublishOnly": "Build 'Source/**/*.ts'"
-	},
-	"lint-staged": {
-		"!(**/tests/**/*)*.js": [
-			"prettier --write"
-		],
-		"!(**/tests/**/*)*.jsx": [
-			"prettier --write"
-		],
-		"!(**/tests/**/*)*.ts": [
-			"prettier --write"
-		],
-		"!(**/tests/**/*)*.tsx": [
-			"prettier --write"
-		],
-		"**": [
-			"prettier --write --ignore-unknown"
-		],
-		"*.rs": [
-			"rustfmt --"
-		],
-		"*.toml": [
-			"taplo format"
-		]
-	},
-	"dependencies": {},
-	"devDependencies": {
-		"@changesets/cli": "2.29.2",
-		"@playform/build": "0.2.3",
-		"@taplo/cli": "0.7.0",
-		"cross-env": "7.0.3",
-		"cspell": "8.19.3",
-		"lerna": "8.2.2",
-		"lint-staged": "15.5.1"
-	},
-	"publishConfig": {
-		"access": "public"
-	}
+    "name": "swc-extra-packages-workspace",
+    "packageManager": "pnpm@8.6.7",
+    "private": true,
+    "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/swc"
+    },
+    "scripts": {
+        "prepare": "husky install && git config feature.manyFiles true",
+        "test": "lerna run test",
+        "lint": "lerna run lint"
+    },
+    "lint-staged": {
+        "*.toml": [
+            "taplo format"
+        ],
+        "*.rs": [
+            "rustfmt --"
+        ],
+        "!(**/tests/**/*)*.js": [
+            "prettier --write"
+        ],
+        "!(**/tests/**/*)*.ts": [
+            "prettier --write"
+        ],
+        "!(**/tests/**/*)*.jsx": [
+            "prettier --write"
+        ],
+        "!(**/tests/**/*)*.tsx": [
+            "prettier --write"
+        ],
+        "**": [
+            "prettier --write --ignore-unknown"
+        ]
+    },
+    "devDependencies": {
+        "@changesets/cli": "^2.27.1",
+        "@taplo/cli": "^0.5.2",
+        "cross-env": "^7.0.3",
+        "cspell": "^6.31.1",
+        "husky": "^8.0.3",
+        "lerna": "^8.0.2",
+        "lint-staged": "^13.2.3",
+        "prettier": "^2"
+    }
 }

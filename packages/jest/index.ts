@@ -1,39 +1,33 @@
-import * as crypto from "crypto";
 import * as fs from "fs";
+import * as crypto from "crypto";
 import * as path from "path";
 import * as process from "process";
 import getCacheKeyFunction from "@jest/create-cache-key-function";
 import type { Transformer, TransformOptions } from "@jest/transform";
-import {
-	Options,
-	version as swcVersion,
-	transform,
-	transformSync,
-} from "@swc/core";
 import { parse as parseJsonC, type ParseError } from "jsonc-parser";
-
+import {
+    transformSync,
+    transform,
+    Options,
+    version as swcVersion,
+} from "@swc/core";
 import { version } from "./package.json";
 
 function createTransformer(
-	swcTransformOpts?: Options & {
-		experimental?: {
-			customCoverageInstrumentation?: {
-				enabled: boolean;
-
-				coverageVariable?: string;
-
-				compact?: boolean;
-
-				reportLogic?: boolean;
-
-				ignoreClassMethods?: Array<string>;
-
-				instrumentLog?: { level: string; enableTrace: boolean };
-			};
-		};
-	},
+    swcTransformOpts?: Options & {
+        experimental?: {
+            customCoverageInstrumentation?: {
+                enabled: boolean;
+                coverageVariable?: string;
+                compact?: boolean;
+                reportLogic?: boolean;
+                ignoreClassMethods?: Array<string>;
+                instrumentLog?: { level: string; enableTrace: boolean };
+            };
+        };
+    }
 ): Transformer {
-	const computedSwcOptions = buildSwcTransformOpts(swcTransformOpts);
+    const computedSwcOptions = buildSwcTransformOpts(swcTransformOpts);
 
     const cacheKeyFunction = getCacheKeyFunction(
         [],
@@ -82,127 +76,94 @@ function createTransformer(
             });
         },
 
-			return transformSync(src, {
-				...computedSwcOptions,
-				module: {
-					...computedSwcOptions.module,
-					type: jestOptions.supportsStaticESM
-						? "es6"
-						: ("commonjs" as any),
-				},
-				filename,
-			});
-		},
-		processAsync(src, filename, jestOptions) {
-			insertInstrumentationOptions(
-				jestOptions,
-				!!canInstrument,
-				computedSwcOptions,
-				instrumentOptions,
-			);
+        getCacheKey(src, filename, ...rest) {
+            // @ts-expect-error - type overload is confused
+            const baseCacheKey = cacheKeyFunction(src, filename, ...rest);
 
-			return transform(src, {
-				...computedSwcOptions,
-				module: {
-					...computedSwcOptions.module,
-					// async transform is always ESM
-					type: "es6" as any,
-				},
-				filename,
-			});
-		},
+            const options: TransformOptions =
+                typeof rest[0] === "string" ? (rest as any)[1] : rest[0];
 
-		getCacheKey(src, filename, ...rest) {
-			// @ts-expect-error - type overload is confused
-			const baseCacheKey = cacheKeyFunction(src, filename, ...rest);
-
-			const options: TransformOptions =
-				typeof rest[0] === "string" ? (rest as any)[1] : rest[0];
-
-			return crypto
-				.createHash("sha1")
-				.update(baseCacheKey)
-				.update("\0", "utf8")
-				.update(
-					JSON.stringify({
-						supportsStaticESM: options.supportsStaticESM,
-					}),
-				)
-				.digest("hex");
-		},
-	};
+            return crypto
+                .createHash("sha1")
+                .update(baseCacheKey)
+                .update("\0", "utf8")
+                .update(
+                    JSON.stringify({
+                        supportsStaticESM: options.supportsStaticESM,
+                    })
+                )
+                .digest("hex");
+        },
+    };
 }
 
 export = { createTransformer };
 
 function getOptionsFromSwrc(): Options {
-	const swcrc = path.join(process.cwd(), ".swcrc");
+    const swcrc = path.join(process.cwd(), ".swcrc");
+    if (fs.existsSync(swcrc)) {
+        const errors = [] as ParseError[];
+        const options = parseJsonC(fs.readFileSync(swcrc, "utf-8"), errors);
 
-	if (fs.existsSync(swcrc)) {
-		const errors = [] as ParseError[];
+        if (errors.length > 0) {
+            throw new Error(`Error parsing ${swcrc}: ${errors.join(", ")}`);
+        }
 
-		const options = parseJsonC(fs.readFileSync(swcrc, "utf-8"), errors);
-
-		if (errors.length > 0) {
-			throw new Error(`Error parsing ${swcrc}: ${errors.join(", ")}`);
-		}
-
-		return options as Options;
-	}
-
-	return {};
+        return options as Options;
+    }
+    return {};
 }
 
 const nodeTargetDefaults = new Map([
-	["12", "es2018"],
-	["13", "es2019"],
-	["14", "es2020"],
-	["15", "es2021"],
-	["16", "es2021"],
-	["17", "es2022"],
-	["18", "es2022"],
-	["19", "es2022"],
-	["20", "es2022"],
-	// TODO: Use es2023 once @swc/core supports it
-	// ['18', 'es2023'],
-	// ['19', 'es2023'],
-	// ['20', 'es2023'],
+    ["12", "es2018"],
+    ["13", "es2019"],
+    ["14", "es2020"],
+    ["15", "es2021"],
+    ["16", "es2021"],
+    ["17", "es2022"],
+    ["18", "es2022"],
+    ["19", "es2022"],
+    ["20", "es2022"],
+    // TODO: Use es2023 once @swc/core supports it
+    // ['18', 'es2023'],
+    // ['19', 'es2023'],
+    // ['20', 'es2023'],
 ]);
 
 function buildSwcTransformOpts(
-	swcOptions: (Options & { experimental?: unknown }) | undefined,
+    swcOptions: (Options & { experimental?: unknown }) | undefined
 ): Options {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const { experimental, ...computedSwcOptions } =
-		swcOptions && Object.keys(swcOptions).length > 0
-			? swcOptions
-			: (getOptionsFromSwrc() as Options & { experimental?: unknown });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { experimental, ...computedSwcOptions } =
+        swcOptions && Object.keys(swcOptions).length > 0
+            ? swcOptions
+            : (getOptionsFromSwrc() as Options & { experimental?: unknown });
 
-	if (!computedSwcOptions.env && !computedSwcOptions.jsc?.target) {
-		set(
-			computedSwcOptions,
-			"jsc.target",
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			nodeTargetDefaults.get(process.version?.match(/v(\d+)/)![1]) ||
-				"es2018",
-		);
-	}
+    if (!computedSwcOptions.env && !computedSwcOptions.jsc?.target) {
+        set(
+            computedSwcOptions,
+            "jsc.target",
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            nodeTargetDefaults.get(process.version?.match(/v(\d+)/)![1]) ||
+                "es2018"
+        );
+    }
 
-	set(computedSwcOptions, "jsc.transform.hidden.jest", true);
+    set(computedSwcOptions, "jsc.transform.hidden.jest", true);
 
-	if (!computedSwcOptions.sourceMaps) {
-		set(computedSwcOptions, "sourceMaps", "inline");
-	}
+    if (!computedSwcOptions.sourceMaps) {
+        set(computedSwcOptions, "sourceMaps", "inline");
+    }
 
-	if (computedSwcOptions.jsc?.baseUrl) {
-		set(
-			computedSwcOptions,
-			"jsc.baseUrl",
-			path.resolve(computedSwcOptions.jsc.baseUrl),
-		);
-	}
+    if (computedSwcOptions.jsc?.baseUrl) {
+        set(
+            computedSwcOptions,
+            "jsc.baseUrl",
+            path.resolve(computedSwcOptions.jsc.baseUrl)
+        );
+    }
 
-	return computedSwcOptions;
+    return computedSwcOptions;
 }
 
 function insertInstrumentationOptions(
@@ -213,9 +174,9 @@ function insertInstrumentationOptions(
 ): Options {
     const shouldInstrument = jestOptions.instrument && canInstrument;
 
-	if (!shouldInstrument) {
-		return swcTransformOpts;
-	}
+    if (!shouldInstrument) {
+        return swcTransformOpts;
+    }
 
     if (
         swcTransformOpts?.jsc?.experimental?.plugins?.some(
@@ -244,17 +205,14 @@ function insertInstrumentationOptions(
 }
 
 function set(obj: any, path: string, value: any) {
-	let o = obj;
+    let o = obj;
+    const parents = path.split(".");
+    const key = parents.pop() as string;
 
-	const parents = path.split(".");
+    for (const prop of parents) {
+        if (o[prop] == null) o[prop] = {};
+        o = o[prop];
+    }
 
-	const key = parents.pop() as string;
-
-	for (const prop of parents) {
-		if (o[prop] == null) o[prop] = {};
-
-		o = o[prop];
-	}
-
-	o[key] = value;
+    o[key] = value;
 }
