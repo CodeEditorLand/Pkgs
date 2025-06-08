@@ -28,16 +28,16 @@
     "dependencies": {
         "@jest/create-cache-key-function": "^29.7.0",
         "@swc/counter": "workspace:^",
-        "jsonc-parser": "^3.2.0"
+        "jsonc-parser": "^3.3.1"
     },
     "devDependencies": {
-        "@jest/transform": "^27.5.1",
+        "@jest/transform": "^29.7.0",
         "@swc/core": "^1.6.4",
-        "@types/node": "^16.11.12",
-        "@typescript-eslint/eslint-plugin": "^5.6.0",
-        "@typescript-eslint/parser": "^5.6.0",
-        "eslint": "^8.4.1",
-        "jest": "^27.4.4",
+        "@types/node": "^22.15.30",
+        "@typescript-eslint/eslint-plugin": "^8.33.1",
+        "@typescript-eslint/parser": "^8.33.1",
+        "eslint": "^9.28.0",
+        "jest": "^29.7.0",
         "typescript": "^5.8.3"
     },
     "engines": {
