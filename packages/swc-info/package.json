@@ -1,6 +1,6 @@
 {
     "name": "swc-info",
-    "packageManager": "pnpm@8.6.7",
+    "packageManager": "pnpm@11.15.0",
     "version": "0.1.16",
     "description": "CLI tool to help issue reporting for swc",
     "sideEffects": false,
@@ -29,8 +29,8 @@
     },
     "homepage": "https://swc.rs",
     "devDependencies": {
-        "@types/node": "^24.0.0",
-        "typescript": "^5.8.3"
+        "@types/node": "^26.1.1",
+        "typescript": "^7.0.2"
     },
     "bin": "bin/swc-info.js"
 }

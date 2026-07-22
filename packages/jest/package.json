@@ -26,19 +26,19 @@
         "@swc/core": "*"
     },
     "dependencies": {
-        "@jest/create-cache-key-function": "^30.0.0",
+        "@jest/create-cache-key-function": "^30.4.1",
         "@swc/counter": "workspace:^",
         "jsonc-parser": "^3.3.1"
     },
     "devDependencies": {
-        "@jest/transform": "^30.0.0",
+        "@jest/transform": "^30.4.1",
         "@swc/core": "^1.6.4",
-        "@types/node": "^24.0.0",
-        "@typescript-eslint/eslint-plugin": "^8.34.0",
-        "@typescript-eslint/parser": "^8.34.0",
-        "eslint": "^9.28.0",
-        "jest": "^30.0.0",
-        "typescript": "^5.8.3"
+        "@types/node": "^26.1.1",
+        "@typescript-eslint/eslint-plugin": "^8.64.0",
+        "@typescript-eslint/parser": "^8.64.0",
+        "eslint": "^10.7.0",
+        "jest": "^30.4.2",
+        "typescript": "^7.0.2"
     },
     "engines": {
         "npm": ">= 7.0.0"

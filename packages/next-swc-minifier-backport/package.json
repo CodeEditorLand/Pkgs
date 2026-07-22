@@ -17,9 +17,9 @@
     "license": "Apache-2.0",
     "dependencies": {},
     "devDependencies": {
-        "@swc/core": "^1.11.31"
+        "@swc/core": "^1.15.43"
     },
     "peerDependencies": {
-        "@swc/core": "^1.11.31"
+        "@swc/core": "^1.15.43"
     }
 }
