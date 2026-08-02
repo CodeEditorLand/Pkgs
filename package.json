@@ -1,6 +1,6 @@
 {
     "name": "swc-extra-packages-workspace",
-    "packageManager": "pnpm@11.15.0",
+    "packageManager": "pnpm@11.18.0",
     "private": true,
     "funding": {
         "type": "opencollective",
@@ -40,8 +40,8 @@
         "cross-env": "^10.1.0",
         "cspell": "^10.0.1",
         "husky": "^9.1.7",
-        "lerna": "^9.0.7",
-        "lint-staged": "^17.1.0",
+        "lerna": "^10.0.0",
+        "lint-staged": "^17.3.0",
         "prettier": "^3"
     }
 }
